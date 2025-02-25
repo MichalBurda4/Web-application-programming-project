@@ -1,0 +1,25 @@
+<div class="guest-container">
+    <h1>Przychodnia lekarska</h1>
+    <p class="intro-text">You need to log in to access this page.</p>
+
+    <div class="buttons">
+        <button (click)="navigateToLogin()">Zaloguj się!</button>
+        <button (click)="navigateToRegister()">Zarejestruj się!</button>
+    </div>
+
+    <section class="about-clinic">
+        <h2>O naszej Przychodni</h2>
+        <p>Nasza klinika świadczy doskonałe usługi medyczne od 1950 roku. Jesteśmy zobowiązani do zapewnienia najlepszej opieki medycznej naszym pacjentom, dysponując zespołem doświadczonych lekarzy i nowoczesnymi placówkami.</p> <p>Specjalizujemy się w różnych dziedzinach medycyny i dbamy o to, aby nasi pacjenci otrzymali kompleksowe i spersonalizowane leczenie.</p> <p>Odwiedź nas, aby doświadczyć wysokiej jakości usług medycznych.</p>
+    </section>
+
+    <!-- Lista lekarzy tylko do wyświetlenia -->
+    <div class="doctor-list">
+        <h2>Wybierz lekarza</h2>
+        <h3>Imię Nazwisko Specjalizacja:</h3>
+        <ul>
+            <li *ngFor="let doctor of doctors" class="doctor-item">
+                {{ doctor.firstName }} {{ doctor.lastName }} specjalizacja: {{ doctor.specialization }}
+            </li>
+        </ul>
+    </div>
+</div>

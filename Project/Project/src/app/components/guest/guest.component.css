@@ -1,0 +1,154 @@
+/* Ogólne ustawienia */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb;
+    color: #333;
+  }
+  
+  /* Kontener główny */
+  .guest-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+  /* Nagłówek */
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #35dc67; /* Czerwony nagłówek */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Wprowadzenie - tekst */
+  .intro-text {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Przyciski */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .buttons button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #35dc67;
+    color: white;
+  }
+  
+  /* Przyciski - hover */
+  .buttons button:hover {
+    background-color: #35dc67;
+    transform: translateY(-2px);
+  }
+  
+  /* Sekcja o klinice */
+  .about-clinic {
+    margin-bottom: 40px;
+  }
+  
+  .about-clinic h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #35dc67;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .about-clinic p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Lista lekarzy */
+  .doctor-list {
+    padding: 30px;
+    background-color: #f4f7fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .doctor-list h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #35dc67;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .doctor-list h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .doctor-item {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #e9f7fc;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #d0e8f7;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  /* Lista lekarzy - hover */
+  .doctor-item:hover {
+    background-color: #d1f0fc;
+    transform: translateY(-2px);
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .doctor-list {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 28px;
+    }
+  
+    .intro-text, .about-clinic p {
+      font-size: 16px;
+    }
+  }
+  

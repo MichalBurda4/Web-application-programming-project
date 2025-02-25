@@ -1,0 +1,58 @@
+<div class="login-container">
+  
+  <div class="login-box">
+    
+    <!-- Sekcja logowania -->
+    <div class="login-form">
+      <h2 class="title">Zaloguj się</h2>
+      <form (ngSubmit)="onLogin()">
+        
+        <!-- Email -->
+        <div class="form-element">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" placeholder="abc@gmail.com" required/>
+        </div>
+        
+        <!-- Hasło -->
+        <div class="form-element">
+          <label for="password">Hasło</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="*******" required />
+          <button 
+      type="button" 
+      class="btn btn-outline-secondary" 
+      (click)="togglePasswordVisibility('password')"> <!--Funkcja wyświetlenia hasła -->
+      <span>
+        {{ showPassword ? '👁️‍🗨️' : '👁️' }}
+      </span>
+    </button>
+        </div>
+        <button type="submit" class="btn btn-primary">Zaloguj</button> <!-- Przycisk logowania -->
+      </form>
+      <div class="register-link">
+        <p>
+          Nie masz jeszcze konta?
+          <a routerLink="/register" class="btn-link">Zarejestruj się</a> <!-- Przekierowanie do strony rejestracji -->
+        </p>
+      </div>
+    </div>
+
+    <!-- Sekcja powitalna -->
+    <div class="welcome-section">
+      <h1>Przychodnia Lekarska</h1>
+      <h2 class="welcome-title">Witaj z powrotem!</h2>
+      <p class="welcome-text">
+        Cieszymy się, że znów jesteś z nami! Mamy nadzieję, że czas spędzony
+        poza nami był udany. Miło Cię znów widzieć!
+      </p>
+      <p class="signup-link">
+        Nie masz konta? <a routerLink="/register">Zarejestruj się.</a>
+      </p>
+
+      <button (click)="navigateToUnauthorizedView()" class="btn btn-secondary">Powrót do strony niezalogowanego</button>
+    </div>
+
+    
+    
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </div>
+</div>

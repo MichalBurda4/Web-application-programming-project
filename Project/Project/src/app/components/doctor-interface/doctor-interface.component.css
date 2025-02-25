@@ -1,0 +1,425 @@
+/* Resetowanie stylów */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ogólne ustawienia */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Kontener główny */
+.weekly-calendar-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Nagłówek kalendarza */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Nagłówek kalendarza */
+.calendar-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Przyciski kalendarza */
+.calendar-header button {
+  background-color: #ffffff;
+  color: #28a745;
+  border: 1px solid #28a745;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Przyciski kalendarza po najechaniu */
+.calendar-header button:hover {
+  background-color: #218838;
+  color: #ffffff;
+}
+
+/* Lista lekarzy */
+.doctor-list {
+  text-align: center;
+  margin: 30px 0;
+}
+
+/* Nagłówek listy lekarzy */
+.doctor-list h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+/* Lista lekarzy */
+.doctor-list ul {
+  list-style: none;
+}
+
+/* Element listy lekarzy */
+.doctor-item {
+  padding: 15px;
+  margin: 8px auto;
+  background-color: #e9f7fc;
+  color: #28a745;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #d0e8f7;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Element listy lekarzy po najechaniu */
+.doctor-item:hover {
+  background-color: #d1f0fc;
+  transform: translateY(-2px);
+}
+
+/* Siatka kalendarza */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nagłówek kolumny */
+.day-columns {
+  display: flex;
+  flex: 1;
+}
+
+/* Kolumna dnia */
+.day-column {
+  flex: 1;
+  border-right: 1px solid #e0e0e0;
+  background-color: #f7f7f7;
+}
+
+/* Nagłówek dnia */
+.day-header {
+  text-align: center;
+  font-weight: 600;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 12px 0;
+  border-bottom: 2px solid #218838;
+}
+
+/* Nagłówek dnia po najechaniu */
+.current-day {
+  background-color: #218838;
+  font-weight: 700;
+}
+
+/* Sloty czasowe */
+.time-slot {
+  height: 60px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Sloty czasowe po najechaniu */
+.time-slot:hover {
+  background-color: #e9f7fc;
+}
+
+/* Sloty czasowe z zajętymi terminami */
+.past-slot {
+  background-color: #f5f5f5;
+  color: #aaa;
+  pointer-events: none;
+}
+
+/* Sloty czasowe z zajętymi terminami po najechaniu */
+.selected-slot {
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+}
+
+/* Sloty czasowe z zajętymi terminami po najechaniu */
+.selected-slot:hover {
+  background-color: #218838;
+}
+
+/* Okno modalne */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animacja pojawiania się okna modalnego */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Nagłówek okna modalnego */
+.modal h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Formularz okna modalnego */
+.modal label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+  display: block;
+}
+
+/* Pola formularza */
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+/* Focussowanie pól formularza */
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* Styl przycisków modalnych */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Styl przycisków formularza */
+.form-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Styl przycisku zapisu */
+.form-buttons button[type='submit'] {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Styl przycisku zapisu po najechaniu */
+.form-buttons button[type='submit']:hover {
+  background-color: #218838;
+}
+
+/* Styl przycisku anulowania */
+.form-buttons button[type='button'] {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Styl przycisku anulowania po najechaniu */
+.form-buttons button[type='button']:hover {
+  background-color: #c82333;
+}
+
+/* Rezerwacje */
+.active-reservations {
+  margin: 20px;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+
+/* Nagłówek rezerwacji */
+.active-reservations h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Element rezerwacji */
+.reservation-item {
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #e3f9e7;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #28a745;
+}
+
+/* Formularz dostępności cyklicznych */
+form {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Etykiety formularza */
+form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Pola formularza */
+form input[type="date"],
+form input[type="time"],
+form button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+/* Focussowanie pól formularza */
+form input[type="date"]:focus,
+form input[type="time"]:focus,
+form button:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* Styl przycisku zapisu */
+form button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Styl przycisku zapisu po najechaniu */
+form button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Styl checkboxów dni tygodnia */
+form div label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* Styl checkboxów dni tygodnia */
+form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Styl przycisku zapisu dostępności */
+.save-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+/* Styl przycisku zapisu dostępności po najechaniu */
+.save-button:hover {
+  background-color: #218838;
+}
+
+.reserved-slot {
+  background-color: #f3f3f3;
+  color: #888;
+}
+
+.patient-name {
+  display: block;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.reservations-section {
+  margin-bottom: 20px;
+}
+
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+.reservations-table th,
+.reservations-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.reservations-table th {
+  background-color: #f4f4f4;
+}

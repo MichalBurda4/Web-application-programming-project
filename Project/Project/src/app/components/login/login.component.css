@@ -1,0 +1,140 @@
+/* Styl głównego kontenera */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  font-family: Arial, sans-serif;
+}
+
+/* Styl kontenera logowania i sekcji powitalnej */
+.login-box {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+/* Styl formularza logowania */
+.login-form {
+  padding: 30px;
+  width: 50%;
+  background: white;
+}
+
+/* Styl formularza logowania */
+.login-form .title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Styl elementów formularza */
+.form-element {
+  margin-bottom: 20px;
+}
+
+/* Styl etykiety formularza */
+.form-element label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Styl kontrolki formularza */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Styl placeholdera kontrolki formularza */
+.form-control::placeholder {
+  color: #999;
+}
+
+
+/* Styl przycisku */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Styl przycisku po najechaniu */
+.btn-primary:hover {
+  background-color: #218838;
+}
+
+/* Styl linku do rejestracji */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styl linku do rejestracji */
+.register-link a {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styl linku do rejestracji po najechaniu */
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Styl sekcji powitalnej */
+.welcome-section {
+  width: 50%;
+  background: #28a745;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Styl tytułu sekcji powitalnej */
+.welcome-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Styl tekstu sekcji powitalnej */
+.welcome-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Styl linku w sekcji powitalnej */
+.signup-link a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Styl linku w sekcji powitalnej po*/
+.signup-link a:hover {
+  text-decoration: none;
+}

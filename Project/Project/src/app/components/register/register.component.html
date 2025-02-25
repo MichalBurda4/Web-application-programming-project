@@ -1,0 +1,97 @@
+<div class="register-container">
+  <div class="register-box">
+    <div class="register-form">
+      <h2 class="title">Register</h2>
+      <form (ngSubmit)="onRegister()">
+        
+        <!-- Imię -->
+        <div class="form-element">
+          <label for="firstName">Imię</label>
+          <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" class="form-control" placeholder="Jan" required/>
+        </div>
+        
+        <!-- Nazwisko -->
+        <div class="form-element">
+          <label for="lastName">Nazwisko</label>
+          <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" class="form-control" placeholder="Nowak" required/>
+        </div>
+        
+        <!-- Email -->
+        <div class="form-element">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" placeholder="abc@gmail.com" required />
+        </div>
+        
+        <!-- Hasło -->
+        <div class="form-element">
+            <label for="password">Hasło</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="*******" required />
+            <div class="input-group-append">
+              <button 
+              type="button" 
+              class="btn btn-outline-secondary" 
+              (click)="togglePasswordVisibility('password')"> <!--Funkcja wyświetlenia hasła -->
+              <span>
+                {{ showPassword ? '👁️‍🗨️' : '👁️' }}
+              </span>
+            </button>
+            </div>
+         
+        </div>
+        
+        <!-- Powtórz hasło -->
+        <div class="form-element">
+          <label for="confirmPassword">Powtórz Hasło</label>
+          <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" placeholder="*******" required />
+          <div class="input-group-append">
+            <button 
+              type="button" 
+              class="btn btn-outline-secondary" 
+              (click)="togglePasswordVisibility('confirmPassword')"> <!--Funkcja wyświetlenia hasła -->
+              <span>
+                {{ showConfirmPassword ? '👁️‍🗨️' : '👁️' }}
+              </span>
+            </button> 
+          </div>
+        </div>
+        
+        <!-- Pole roli -->
+        <div class="form-element">
+          <label for="role">Typ konta</label>
+          <select id="role" [(ngModel)]="role" name="role" class="form-control" >
+            <option value="doctor">Doktor</option>
+            <option value="patient">Pacjent</option>
+          </select>
+        </div>
+        
+        <!-- Pole specjalizacji -->
+        <div class="form-element" *ngIf="role === 'doctor'">
+          <label for="specialization">Specjalizacja</label>
+          <input type="text" id="specialization" [(ngModel)]="specialization" name="specialization" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+      </form>
+      
+      <div class="login-link">
+        <p>
+          Masz już u nas konto?
+          <a routerLink="/login" class="btn-link">Zaloguj się!</a> <!-- Przekierowanie do strony logowania -->
+        </p>
+      </div>
+    </div>
+      <!-- Sekcja powitalna -->
+      <div class="welcome-section">
+        <h1>Przychodnia Lekarska</h1>
+        <h2 class="welcome-title">Witaj na naszej stronie!</h2>
+        <p class="welcome-text">
+          Cieszymy się, że jesteś z nami! Miło Cię widzieć!
+        </p>
+          <p class="login-link">
+            Masz już konto? <a routerLink="/login" class="btn-link">Sign In</a> <!-- Przekierowanie do strony logowania -->
+          </p>
+          <button (click)="navigateToUnauthorizedView()" class="btn btn-secondary">Powrót do strony niezalogowanego</button>
+      </div>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p> <!-- Wyświetlenie błędu -->
+    
+  </div>
+</div>

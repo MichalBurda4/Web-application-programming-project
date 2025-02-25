@@ -1,0 +1,503 @@
+/* Ogólne ustawienia */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+/* Kontener główny */
+.weekly-calendar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Nagłówek kalendarza */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 20px;
+  border-bottom: 2px solid #218838;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nagłówek kalendarza - tytuł */
+.calendar-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Nagłówek kalendarza - przycisk */
+.calendar-header button {
+  background-color: #ffffff;
+  color: #28a745;
+  border: 1px solid #28a745;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Nagłówek kalendarza - przycisk hover */
+.calendar-header button:hover {
+  background-color: #28a745;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Lista lekarzy */
+.doctor-list {
+  padding: 30px;
+  text-align: center;
+  background-color: #f4f7fa;
+}
+
+/* Lista lekarzy - tytuł */
+.doctor-list h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+/* Lista lekarzy - lista */
+.doctor-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Lista lekarzy - element */
+.doctor-item {
+  padding: 18px;
+  margin: 10px 0;
+  background-color: #e9f7fc;
+  color: #28a745;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #d0e8f7;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Lista lekarzy - element hover */
+.doctor-item:hover {
+  background-color: #d1f0fc;
+  transform: translateY(-2px);
+}
+
+/* Siatka kalendarza */
+.calendar-grid {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Kolumny dni */
+.day-columns {
+  display: flex;
+  flex: 1;
+}
+
+/* Kolumna dnia */
+.day-column {
+  flex: 1;
+  border-right: 1px solid #e0e0e0;
+  background-color: #f7f7f7;
+}
+
+/* Nagłówek dnia */
+.day-header {
+  text-align: center;
+  font-weight: 600;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 18px;
+  border-bottom: 2px solid #218838;
+}
+
+/* Nagłówek dnia - nazwa */
+.current-day {
+  background-color: #218838;
+  font-weight: 700;
+}
+
+/* Sloty czasowe */
+.time-slot {
+  height: 60px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Sloty czasowe - hover */
+.time-slot:hover {
+  background-color: #e9f7fc;
+}
+
+/* Sloty czasowe - zajęte */
+.past-slot {
+  background-color: #f0f0f0;
+  color: #aaa;
+  pointer-events: none;
+}
+
+/* Sloty czasowe - zajęte hover */
+.selected-slot {
+  background-color: #28a745;
+  color: white;
+  font-weight: 600;
+}
+
+/* Sloty czasowe - zajęte hover */
+.selected-slot:hover {
+  background-color: #218838;
+}
+
+/* Okno modalne */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  z-index: 1000;
+  width: 500px;
+  font-family: 'Inter', Arial, sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Okno modalne - animacja */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Okno modalne - tytuł */
+.modal h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Okno modalne - etykieta */
+.modal label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+  display: block;
+}
+
+/* Okno modalne - input, select, textarea */
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+/* Okno modalne - input, select, textarea focus */
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* Okno modalne - przyciski */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Okno modalne - przycisk */
+.form-buttons button {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Okno modalne - przycisk submit */
+.form-buttons button[type='submit'] {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Okno modalne - przycisk submit hover */
+.form-buttons button[type='submit']:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Okno modalne - przycisk anuluj */
+.form-buttons button[type='button'] {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Okno modalne - przycisk anuluj hover */
+.form-buttons button[type='button']:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Rezerwacje */
+.active-reservations {
+  margin: 20px;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+
+/* Rezerwacje - tytuł */
+.active-reservations h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Rezerwacje - lista */
+.reservation-item {
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: #e3f9e7;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #28a745;
+}
+
+
+.cart {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #f9f9f9;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.cart label {
+  display: block;
+  margin: 5px 0;
+}
+
+.cart button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart button:hover {
+  background-color: #218838;
+}
+
+.cart {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  margin: 20px auto;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.cart label {
+  display: block;
+  margin: 5px 0;
+}
+
+.cart button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart button:hover {
+  background-color: #0056b3;
+}
+
+
+/* .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button.danger {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+button.danger:hover {
+  background-color: #cc0000;
+} */
+ 
+/* Stylizacja kontenera koszyka */
+.cart-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-container h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Lista rezerwacji */
+.cart-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-container li {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 5px solid #28a745;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Stylizacja tekstu w rezerwacji */
+.cart-container li strong {
+  font-size: 18px;
+  color: #333;
+}
+
+.cart-container li span {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Styl dla przycisków wyboru rezerwacji */
+.cart-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Stylizacja podsumowania ceny */
+.cart-container h4 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 20px;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Przycisk płatności */
+.cart-container button {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.cart-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.cart-container button:hover {
+  background-color: #218838;
+}
+

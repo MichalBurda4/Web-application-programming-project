@@ -1,0 +1,119 @@
+<div class="weekly-calendar-container">
+  <header class="calendar-header">
+    <div class="doctor-info">
+      <h3>
+        {{ doctorInfo?.firstName }} {{ doctorInfo?.lastName }} - {{ doctorInfo?.specialization }}
+      </h3>
+    </div>
+    <button (click)="prevWeek()">&#8592; Poprzedni tydzień</button>
+    <h2>{{ weekHeader }}</h2>
+    <button (click)="nextWeek()">Następny tydzień &#8594;</button>
+    <button class="logout-button" (click)="onLogout()">Wyloguj</button>
+  </header>
+
+
+  <div class="reservations-section">
+    <h3>Rezerwacje</h3>
+    <table class="reservations-table">
+      <thead>
+        <tr>
+          <th>Imię Pacjenta</th>
+          <th>Data</th>
+          <th>Godzina</th>
+          <th>Płeć</th>
+          <th>Wiek</th>
+          <th>Typ</th>
+          <th>Notatka</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+          <td>{{ reservation.patientName }}</td>
+          <td>{{ reservation.date | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ reservation.time }}</td>
+          <td>{{ reservation.gender }}</td>
+          <td>{{ reservation.age }}</td>
+          <td>{{ reservation.type }}</td>
+          <td>{{ reservation.note }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Dodano kontener przewijania -->
+  <div class="calendar-scroll-container">
+    <div class="calendar-grid">
+      <div class="day-columns">
+        <div class="day-column" *ngFor="let day of weekDays">
+          <div class="day-header" (click)="toggleAllDay(day)" [ngClass]="{ 'current-day': isToday(day) }">
+            {{ day | date: 'EEEE' }}<br />
+            {{ day | date: 'MMM d' }}
+          </div>
+  
+          <div class="time-slot" *ngFor="let time of timeSlots"
+            [ngClass]="{
+              'selected-slot': selectedSlots[formatDate(day) + '_' + time],
+              'past-slot': isPastSlot(day, time),
+              'current-slot': isCurrentSlot(day, time),
+              'reserved-slot': isReservedSlot(day, time)
+            }"
+            (click)="toggleSlot(day, time)">
+            <span>{{ time }}</span>
+            <span *ngIf="isReservedSlot(day, time)" class="patient-name">
+              Zarezerwowane przez: {{ getPatientName(day, time) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  <!-- Dodano formularz zapisu dostępności -->
+  <form (ngSubmit)="saveCyclicAvailabilities()">
+    <label for="startDate">Dzień rozpoczącia:</label> <!-- Rozpoczęcie -->
+    <input type="date" id="startDate" [(ngModel)]="availabilityForm.startDate" name="startDate" required />
+  
+    <label for="endDate">Dzień zakończenia:</label> <!-- Zakończenie -->
+    <input type="date" id="endDate" [(ngModel)]="availabilityForm.endDate" name="endDate" required />
+  
+    <div>
+      <label *ngFor="let day of daysOfWeek"> <!-- Dni tygodnia -->
+        <input type="checkbox" [(ngModel)]="availabilityForm.selectedDays[day]" name="{{ day }}" />
+        {{ day }}
+      </label>
+    </div>
+  
+    <label for="startTime">Godzina rozpoczęcia:</label> <!-- Rozpoczęcie -->
+<input 
+  type="time" 
+  id="startTime" 
+  [(ngModel)]="availabilityForm.startTime" 
+  name="startTime" 
+  required 
+  step="1800" 
+  (input)="validateTime($event)"
+
+/>
+
+<label for="endTime">Godzina zakończenia:</label> <!-- Zakończenie -->
+<input 
+  type="time" 
+  id="endTime" 
+  [(ngModel)]="availabilityForm.endTime" 
+  name="endTime" 
+  required 
+  step="1800" 
+  (input)="validateTime($event)"
+  
+/>
+
+
+    <!-- Przycisk zapisu cyklicznej dostępności -->
+    <button type="submit">Zapisz cykliczną dostępność</button>
+  </form>
+  <!-- Przycisk zapisu dostępności -->
+  <button class="save-button" (click)="saveAvailabilities()">Zapisz dostępność</button>
+</div>

@@ -1,0 +1,152 @@
+<div class="weekly-calendar-container">
+ <header class="calendar-header">
+    <div>
+      <h1>Witaj na stronie naszej przychodni!</h1> <!-- Nagłówek strony -->
+      <p *ngIf="patientInfo">{{ patientInfo.firstName }} {{ patientInfo.lastName }}</p>
+    </div>
+    <button class="logout-button" (click)="onLogout()">Wyloguj</button> <!-- Przycisk wylogowania -->
+  </header>
+
+  <div *ngIf="!selectedDoctor" class="doctor-list">
+    <h2>Wybierz lekarza</h2> <!-- Nagłówek listy lekarzy -->
+    <h3>Imię Nazwisko Specjalizacja:</h3>
+    <ul>
+      <li *ngFor="let doctor of doctors" (click)="selectDoctor(doctor)" class="doctor-item"> {{ doctor.firstName }} {{ doctor.lastName }} specjalizacja {{ doctor.specialization }} </li>
+    </ul>
+  </div>
+
+  <div class="active-reservations" *ngIf="reservations.length > 0">
+    <h3>Twoje rezerwacje:</h3> <!-- Nagłówek listy rezerwacji -->
+    <ul>
+      <li *ngFor="let reservation of reservations" class="reservation-item" (click)="viewReservationDetails(reservation)" > <strong>{{ reservation.type }}</strong> z doktorem {{ reservation.doctorName }} dnia {{ reservation.date }} o godzinie {{ reservation.time }} </li>
+    </ul>
+  </div>
+  <div *ngIf="reservations.length === 0">
+    <p>Brak aktywnych rezerwacji.</p>
+  </div>
+
+  <div class="cart-container">
+    <h3>Twój koszyk</h3>
+    <ul>
+      <li *ngFor="let reservation of reservations">
+        <input type="checkbox" [(ngModel)]="reservation.selected" (change)="calculateTotal()" />
+        <strong>{{ reservation.type }}</strong> 
+        z doktorem {{ reservation.doctorName }} 
+        dnia {{ reservation.date }} o godzinie {{ reservation.time }} 
+        - {{ getReservationPrice(reservation.type) }} zł
+      </li>
+    </ul>
+    <button (click)="simulatePayment()" [disabled]="total === 0">Zapłać</button>
+  </div>
+  
+
+<div *ngIf="selectedDoctor">
+  <header class="calendar-header"> <!-- Nagłówek kalendarza -->
+    <button (click)="backToMenu()">&#8592; Wróć do głowego Menu</button> <!-- Przycisk powrotu do menu głównego -->
+    <button (click)="prevWeek()">&#8592; Poprzedni tydzień</button> <!-- Przycisk przewijania tygodnia -->
+    <h2>{{ weekHeader }}</h2>
+    <button (click)="nextWeek()">Następny tydzień &#8594;</button> <!-- Przycisk przewijania tygodnia -->
+  </header>
+      <div class="calendar-scroll-container">
+        <div class="calendar-grid">
+          <div class="day-columns">
+            <div class="day-column" *ngFor="let day of weekDays">
+              <div class="day-header" [ngClass]="{ 'current-day': isToday(day) }">
+                {{ day | date: 'EEEE' }}<br />
+                {{ day | date: 'MMM d' }}
+              </div>
+              <div class="time-slot" *ngFor="let time of timeSlots" [ngClass]="{'selected-slot': isSlotAvailable(day, time), 'past-slot': isPastSlot(day, time), 'current-slot': isCurrentSlot(day, time)}">
+
+              <!-- Slot zarezerwowany -->
+              <div *ngIf="isSlotReserved(day, time); else availableSlot" class="reservation-slot" (click)="showReservation(day, time)"> Zarezerwowany
+              </div>
+                <ng-template #availableSlot> <!-- Slot dostępny -->
+                  <div (click)="selectSlot(day, time)">{{ time }}</div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="modal" *ngIf="newReservation">
+        <div class="modal-content">
+          <h3>Szczegóły rezerwacji</h3>
+          
+          <!-- Typ wizyty -->
+          <label>Typ konsultacji:</label>
+          <select [(ngModel)]="newReservation.type">
+            <option value="Pierwsza wizyta">Pierwsza wizyta</option>
+            <option value="Wizyta kontrolna">Wizyta kontrolna</option>
+            <option value="Choroba przewlekła">Choroba przewlekła</option>
+            <option value="Recepta">Recepta</option>
+          </select>
+
+          <!-- Data wizyty -->
+          <label>Imię Nazwisko pacjenta:</label>
+          <input type="text" [(ngModel)]="newReservation.patientName" readonly /> <!-- Pole imienia i nazwiska pacjenta -->
+          
+          <label>Płeć:</label>
+          <select [(ngModel)]="newReservation.gender"> <!-- Pole płci pacjenta -->
+            <option value="Kobiera">Kobieta</option>
+            <option value="Mężczyzna">Mężczyzna</option>
+          </select>
+          
+
+          <label>Wiek:</label>
+          <input type="number" [(ngModel)]="newReservation.age" /> <!-- Pole wieku pacjenta -->
+          
+          <label>Informacje dla lekarza</label>
+          <textarea [(ngModel)]="newReservation.notes"></textarea> <!-- Pole notatek dla lekarza -->
+          
+          <!-- Przyciski zatwierdzania i odrzucania rezerwacji -->
+          <div class="form-buttons">
+            <button type="button" (click)="newReservation = null">Odrzuć</button>
+            <button type="submit" (click)="saveReservation()">Zatwierdź wizytę</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Wyświetlanie szczegółów wybranej rezerwacji -->
+      <div class="modal" *ngIf="selectedReservation">
+        <div class="modal-content">
+          <h3>Szczegóły rezerwacji</h3>
+          <p><strong>Lekarz:</strong> {{ selectedReservation.doctorName }}</p>
+          <p><strong>Typ wizyty:</strong> {{ selectedReservation.type }}</p>
+          <p><strong>Data:</strong> {{ selectedReservation.date }}</p>
+          <p><strong>Godzina:</strong> {{ selectedReservation.time }}</p>
+          <p><strong>Notatka dla lekarza:</strong> {{ selectedReservation.notes }}</p>
+      
+          <div class="form-buttons">
+            <button class="danger" (click)="cancelReservation()">Anuluj rezerwację</button> <!-- Przycisk anulowania rezerwacji -->
+            <button (click)="selectedReservation = null">Zamknij</button> <!-- Przycisk zamykania okna -->
+          </div>
+        </div>
+      </div>
+    
+      <!-- Modal wyświetlający szczegóły wybranej rezerwacji, jeśli istnieje wybrana rezerwacja -->
+      <div class="modal" *ngIf="selectedReservation">
+        <div class="modal-content">
+          <h3>Szczegóły rezerwacji</h3>
+          <p><strong>Lekarz:</strong> {{ selectedReservation.doctorName }}</p>
+          <p><strong>Typ wizyty:</strong> {{ selectedReservation.type }}</p>
+          <p><strong>Data:</strong> {{ selectedReservation.date }}</p>
+          <p><strong>Godzina:</strong> {{ selectedReservation.time }}</p>
+          <p><strong>Notatka dla lekarza:</strong> {{ selectedReservation.notes }}</p>
+          <!-- <p><strong>Koszt:</strong> 100 zł</p> -->
+          <p><strong>Koszt:</strong> {{ getReservationPrice(selectedReservation.type) }} zł</p>
+           
+          
+          <!-- Przyciski anulowania rezerwacji, przejścia do płatności oraz zamknięcia okna -->
+          <div class="form-buttons">
+            <button class="danger" (click)="cancelReservation()">Anuluj rezerwację</button> <!-- Przycisk anulowania rezerwacji -->
+            <button (click)="goToPayment()">Przejdź do płatności</button>
+            <button (click)="selectedReservation = null">Zamknij</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      
+
+  
