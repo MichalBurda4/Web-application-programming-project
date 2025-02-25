@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Countries Table</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Name<br>
+                <input type="text" id="filter-name" placeholder="Filter by name" oninput="updateFilterCriteria()">
+            </th>
+            <th>
+                Capital<br>
+                <input type="text" id="filter-capital" placeholder="Filter by capital" oninput="updateFilterCriteria()">
+            </th>
+            <th>
+                Population<br>
+                <input type="number" id="filter-min-population" placeholder="Min population" oninput="updateFilterCriteria()">
+            </th>
+            <th>Area</th>
+            <th>Subregion</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+    <div id="pagination">
+        <button id="prev-page" class="page-arrow">←</button>
+        <button id="next-page" class="page-arrow">→</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

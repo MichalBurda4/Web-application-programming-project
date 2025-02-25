@@ -1,0 +1,9 @@
+.requirement {
+    color: gray;
+}
+.requirement.valid {
+    color: green;
+}
+.error {
+    color: red;
+}

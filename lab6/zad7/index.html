@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farma Zombie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="custom-cursor"></div>
+
+<div id="nickname-screen">
+    <h1>Farma Zombie</h1>
+    <p>Podaj swój nick:</p>
+    <input type="text" id="nickname-input" placeholder="Wpisz swój nick">
+    <button id="start-game-button">Rozpocznij grę</button>
+</div>
+
+<div id="game-screen" class="hidden">
+    <div class="board">
+        <img class="board-bg" src="img/board-bg.jpg" alt="Tło">
+        <div class="score-panel">
+            <span>Wynik: </span><span id="score">0</span>
+        </div>
+        <div class="lives-panel">
+            <span>Życia: </span><div id="lives-container"></div>
+        </div>
+        <div id="player-name"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

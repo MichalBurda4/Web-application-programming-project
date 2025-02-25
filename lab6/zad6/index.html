@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmiana Hasła</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div>
+    <label for="new-password">New Password</label>
+    <input type="password" id="new-password">
+    <span id="toggle-new-password">👁️</span>
+
+    <div>
+        <label for="repeat-password">Repeat new Password</label>
+        <input type="password" id="repeat-password">
+        <span id="toggle-repeat-password">👁️</span>
+        <p class="error" id="match-error" style="display: none;">Hasła nie są zgodne.</p>
+    </div>
+
+    <div id="password-requirements">
+        <p class="requirement" id="min-length">at least 8 characters</p>
+        <p class="requirement" id="special-char">at least one special character</p>
+        <p class="requirement" id="uppercase">at least one capital letter</p>
+        <p class="requirement" id="digit">at least one digit</p>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

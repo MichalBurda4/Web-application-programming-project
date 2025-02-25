@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+}
+
+footer {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .carousel {
+        display: none;
+    }
+}

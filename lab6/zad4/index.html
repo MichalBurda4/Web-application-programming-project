@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsplash API Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1><span class="logo">📷 Demo by GR - Unsplash API Tester</span></h1>
+</header>
+
+<div class="search-container">
+    <input type="text" id="search-input" placeholder="Enter a keyword...">
+    <button onclick="searchImages()">🔍 Search</button>
+</div>
+
+<div class="carousel-container">
+    <button id="prev-btn" class="carousel-btn" onclick="scrollImages(-1)">&#60;</button>
+    <div class="image-row" id="image-row"></div>
+    <button id="next-btn" class="carousel-btn" onclick="scrollImages(1)">&#62;</button>
+</div>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Large View">
+    <button id="close-btn" onclick="closeLightbox()">❌ Close</button>
+</div>
+
+<footer>
+    <p>© 2024 Demo by GR - Powered by Unsplash API</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

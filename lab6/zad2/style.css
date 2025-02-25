@@ -1,0 +1,74 @@
+.app {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+li {
+    font-size: 18px;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.high-priority {
+    color: red;
+}
+
+.purchased {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.btn {
+    padding: 4px 8px;
+    margin: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-add {
+    background-color: #959494;
+    color: white;
+}
+
+.btn-save {
+    background-color: #6ce1fb;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+.add-item-form {
+    margin-top: 20px;
+}
+
+.add-item-form input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    width: 60%;
+    margin-right: 8px;
+}
+
+.add-item-form label {
+    font-size: 14px;
+}
