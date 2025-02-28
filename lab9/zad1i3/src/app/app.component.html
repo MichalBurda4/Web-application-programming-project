@@ -1,0 +1,66 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>Animal List</h1>
+  </header>
+
+  <!-- Sekcja kategorii, zawierająca komponent dodawania nowej kategorii -->
+  <div class="category-container">
+    <app-category (categoryAdded)="loadCategories()"></app-category> <!-- Komponent do dodawania kategorii -->
+  </div>
+
+  <!-- Główna sekcja aplikacji zawierająca listę zwierząt -->
+  <main class="app-main">
+    <section class="animal-list-section">
+      <h2>Animal List</h2>
+
+
+      <div class="filter-section">
+        <label for="categoryFilter">Filter by Category:</label> >
+
+
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select [formControl]="categoryForms" multiple>
+            @for (category of categories; track category) {
+              <mat-option [value]="category.name">{{category.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Komponent listy zwierząt, przekazuje filtrowaną listę zwierząt do komponentu -->
+      <app-list
+        [animals]="filteredAnimals"
+        (edit)="editAnimal($event)"
+        (delete)="deleteAnimal($event)"
+        (toggleFavorite)="toggleFavorite($event)">
+      </app-list>
+
+      <!-- Trzy razy powtarzający się komponent listy zwierząt, może być błąd w kodzie -->
+      <app-list
+        [animals]="filteredAnimals"
+        (edit)="editAnimal($event)"
+        (delete)="deleteAnimal($event)"
+        (toggleFavorite)="toggleFavorite($event)">
+      </app-list>
+      <app-list
+        [animals]="filteredAnimals"
+        (edit)="editAnimal($event)"
+        (delete)="deleteAnimal($event)"
+        (toggleFavorite)="toggleFavorite($event)">
+      </app-list>
+
+    </section>
+  </main>
+
+  <!-- Przycisk do pokazania formularza dodawania nowego zwierzęcia -->
+  <button (click)="showForm()">Add New Animal</button> <!-- Przycisk uruchamiający metodę showForm() -->
+
+  <!-- Formularz dodawania nowego zwierzęcia, widoczny tylko, gdy zmienna isFormVisible jest prawdziwa -->
+  <app-form *ngIf="isFormVisible"
+            [categories]="categories"
+            [animal]="animalToEdit"
+            (save)="saveAnimal($event)"
+            (cancel)="cancelForm()">
+  </app-form>
+</div>

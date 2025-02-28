@@ -1,0 +1,91 @@
+<div class="animal-form-container">
+
+  <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Enter animal name"
+        class="form-control"
+      />
+
+      <div *ngIf="animalForm.get('name')?.invalid && animalForm.get('name')?.touched" class="error">
+        Name is required and must be at least 2 characters long.
+      </div>
+    </div>
+
+    <!-- Sekcja dla kategorii zwierzęcia -->
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select id="category" formControlName="category" class="form-control">
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+      <!-- Komunikat o błędzie, jeśli pole 'category' jest niewłaściwe -->
+      <div *ngIf="animalForm.get('category')?.invalid && animalForm.get('category')?.touched" class="error">
+        Category is required.
+      </div>
+    </div>
+
+    <!-- Sekcja dla wieku zwierzęcia -->
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input
+        id="age"
+        type="number"
+        formControlName="age"
+        placeholder="Enter age"
+        class="form-control"
+      />
+      <!-- Komunikat o błędzie, jeśli pole 'age' jest niewłaściwe -->
+      <div *ngIf="animalForm.get('age')?.invalid && animalForm.get('age')?.touched" class="error">
+        Age is required and must be a non-negative number.
+      </div>
+    </div>
+
+    <!-- Sekcja dla wagi zwierzęcia -->
+    <div class="form-group">
+      <label for="weight">Weight:</label>
+      <input
+        id="weight"
+        type="number"
+        formControlName="weight"
+        placeholder="Enter weight"
+        class="form-control"
+      />
+      <!-- Komunikat o błędzie, jeśli pole 'weight' jest niewłaściwe -->
+      <div *ngIf="animalForm.get('weight')?.invalid && animalForm.get('weight')?.touched" class="error">
+        Weight is required and must be a non-negative number.
+      </div>
+    </div>
+
+    <!-- Sekcja dla ulubionego jedzenia zwierzęcia -->
+    <div class="form-group">
+      <label for="favoriteFood">Favorite Food:</label>
+      <input
+        id="favoriteFood"
+        type="text"
+        formControlName="favoriteFood"
+        placeholder="Enter favorite food"
+        class="form-control"
+      />
+      <!-- Komunikat o błędzie, jeśli pole 'favoriteFood' jest niewłaściwe -->
+      <div *ngIf="animalForm.get('favoriteFood')?.invalid && animalForm.get('favoriteFood')?.touched" class="error">
+        Favorite food is required.
+      </div>
+    </div>
+
+    <!-- Sekcja dla przycisków -->
+    <div class="buttons">
+      <!-- Przycisk do zapisania danych - wyłączony, jeśli formularz jest niepoprawny -->
+      <button type="submit" [disabled]="animalForm.invalid" class="btn btn-primary">Save</button>
+      <!-- Przycisk do anulowania -->
+      <button type="button" (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </form>
+</div>

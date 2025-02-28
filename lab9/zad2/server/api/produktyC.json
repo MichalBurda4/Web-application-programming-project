@@ -1,0 +1,56 @@
+{
+   "Samochody": [
+      {
+         "id": 1,
+         "nazwa": "Fiat"
+      },
+      {
+         "id": 2,
+         "nazwa": "Mercedes"
+      },
+      {
+         "id": 3,
+         "nazwa": "BMW"
+      },
+      {
+         "id": 4,
+         "nazwa": "Audi"
+      }
+   ],
+   "Rowery": [
+      {
+         "id": 1,
+         "nazwa": "Kross"
+      },
+      {
+         "id": 2,
+         "nazwa": "Merida"
+      },
+      {
+         "id": 3,
+         "nazwa": "Trek"
+      },
+      {
+         "id": 4,
+         "nazwa": "Specialized"
+      }
+   ],
+   "Obuwie": [
+      {
+         "id": 1,
+         "nazwa": "Puma"
+      },
+      {
+         "id": 2,
+         "nazwa": "Timberland"
+      },
+      {
+         "id": 3,
+         "nazwa": "New Balance"
+      },
+      {
+         "id": 4,
+         "nazwa": "Nike"
+      }
+   ]
+}

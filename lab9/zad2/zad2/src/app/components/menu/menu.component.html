@@ -1,0 +1,10 @@
+<div class="menu-container">
+  <!-- Nagłówek sekcji Menu -->
+  <h1>Menu</h1>
+
+  <div>
+    <!-- Pętla *ngFor iterująca przez każdy element w report -->
+    <!-- Dla każdego elementu w report tworzy komponent app-item -->
+    <app-item *ngFor="let item of report" [reportItem]="item" (reportItemChange)="reportChange.emit()"></app-item>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<input #categoryInput type="text"/>
+
+<div>Wpisz jedną z wybranych kategori</div>
+<div>Dostępne kategorie to: Samochody, Rowery, Słodycze, Elektronika, Obuwie </div>
+<div>Proszę wpisać kategorię po przecinku bez spacji!</div>
+
+<div class="container">
+  <app-menu [report]="report" (reportChange)="refreshTable()"></app-menu>
+  <app-main [mainData]="mainSection"></app-main>
+</div>

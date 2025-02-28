@@ -1,0 +1,33 @@
+<div #targetElement class="section">
+  <h2>Witaj na stronie zmiany hasła</h2>
+  <div class="article">
+    <h3>Aston Martin: Ikona Motoryzacji</h3>
+    <p>Aston Martin, luksusowa marka samochodów sportowych z Wielkiej Brytanii, od dziesięcioleci zachwyca fanów motoryzacji na całym świecie. Dzięki swojej elegancji, mocy i niepowtarzalnemu stylowi, stał się symbolem wyrafinowania i klasy. Modele takie jak DB11 czy legendarna seria DB5, znana z filmów o Jamesie Bondzie, to prawdziwe dzieła sztuki inżynierskiej.</p>
+    <p>Firma kontynuuje swoje innowacyjne podejście, wprowadzając elektryczne i hybrydowe modele, jednocześnie pozostając wierną swojemu dziedzictwu. Aston Martin to nie tylko samochód, to wyraz pasji i ekskluzywności.</p>
+    <h3>BMW: Dynamika i Precyzja</h3>
+    <p>BMW, niemiecka marka premium, jest synonimem dynamicznej jazdy i innowacyjnych technologii. Z modelem serii 3 czy luksusowym SUV-em X5, BMW dostarcza pojazdy łączące sportowy charakter z komfortem. Marka ta intensywnie rozwija segment samochodów elektrycznych, czego przykładem jest BMW i4 czy BMW iX.</p>
+
+    <h3>Mercedes-Benz: Synonim Luksusu</h3>
+    <p>Mercedes-Benz, jedna z najstarszych marek motoryzacyjnych, jest liderem w dziedzinie luksusowych samochodów i technologii autonomicznej jazdy. Klasa S czy elektryczny EQS to przykłady pojazdów łączących nowoczesność z elegancją.</p>
+
+    <h3>Volvo: Bezpieczeństwo i Zrównoważony Rozwój</h3>
+    <p>Volvo, marka pochodząca ze Szwecji, zasłynęła z priorytetu, jakim jest bezpieczeństwo. Modele takie jak XC90 czy XC60 są nie tylko bezpieczne, ale także środowiskowo odpowiedzialne. Volvo intensywnie inwestuje w technologie hybrydowe i elektryczne.</p>
+
+  </div>
+</div>
+
+<div class="side-form" [ngClass]="{ 'visible': (isVisible$ | async) }">
+  <form>
+    <h3>Zmiana Hasła</h3>
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" name="username" />
+
+    <label for="new-password">Nowe hasło:</label>
+    <input type="password" id="new-password" name="new-password" />
+
+    <label for="confirm-password">Powtórz nowe hasło:</label>
+    <input type="password" id="confirm-password" name="confirm-password" />
+
+    <button type="submit">Zmień hasło</button>
+  </form>
+</div>

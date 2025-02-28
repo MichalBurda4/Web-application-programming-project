@@ -1,0 +1,144 @@
+/* Ogólny układ kontenera aplikacji */
+.app-container {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 1200px; /* Zwiększenie maksymalnej szerokości kontenera */
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row; /* Rozstawienie elementów w poziomie */
+  gap: 30px; /* Odstęp między sekcjami */
+}
+
+/* Nagłówek aplikacji */
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: #002b5c;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Główna sekcja aplikacji */
+.app-main {
+  display: flex;
+  flex-direction: row;
+  gap: 30px; /* Odstęp między sekcjami */
+  width: 100%;
+}
+
+/* Sekcja po lewej stronie (formularze) */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Odstęp między formularzami */
+  flex: 1;
+  max-width: 300px; /* Maksymalna szerokość sekcji formularzy */
+}
+
+/* Sekcja dodawania kategorii i zwierzęcia */
+.app-form {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #002b5c;
+}
+
+/* Sekcja listy zwierząt po prawej stronie */
+.animal-list-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ffb400;
+  flex: 2; /* Większy rozmiar sekcji listy zwierząt */
+  overflow-y: auto;
+}
+
+/* Sekcja filtrów */
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-section label {
+  font-weight: bold;
+  color: #002b5c;
+}
+
+mat-form-field {
+  flex: 1;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+}
+
+mat-label {
+  color: #666;
+}
+
+mat-select {
+  color: #002b5c;
+}
+
+/* Lista komponentów */
+app-list {
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Przycisk dodawania nowego zwierzęcia */
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #002b5c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ffb400;
+  color: #002b5c;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* Zmiana na układ pionowy na mniejszych ekranach */
+    padding: 15px;
+  }
+
+  .filter-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .left-column {
+    max-width: none; /* Usunięcie maksymalnej szerokości na mniejszych ekranach */
+  }
+
+  .animal-list-section {
+    flex: none; /* Usunięcie elastyczności, by nie rozciągała się w pionie */
+  }
+}

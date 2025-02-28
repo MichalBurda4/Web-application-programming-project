@@ -1,0 +1,64 @@
+{
+   "Samochody": [
+      {
+         "id": 1,
+         "nazwa": "Opel"
+      },
+      {
+         "id": 2,
+         "nazwa": "BMW"
+      },
+      {
+         "id": 3,
+         "nazwa": "Fiat"
+      },
+      {
+         "id": 4,
+         "nazwa": "Volkswagen"
+      },
+      {
+         "id": 5,
+         "nazwa": "Audi"
+      },
+      {
+         "id": 6,
+         "nazwa": "Mercedes"
+      }
+   ],
+   "Słodycze": [
+      {
+         "id": 1,
+         "nazwa": "Czekolada"
+      },
+      {
+         "id": 2,
+         "nazwa": "Cukierki"
+      },
+      {
+         "id": 3,
+         "nazwa": "Ciastka"
+      },
+      {
+         "id": 4,
+         "nazwa": "Gumy do żucia"
+      }
+   ],
+   "Obuwie": [
+      {
+         "id": 1,
+         "nazwa": "Nike"
+      },
+      {
+         "id": 2,
+         "nazwa": "Adidas"
+      },
+      {
+         "id": 3,
+         "nazwa": "Reebok"
+      },
+      {
+         "id": 4,
+         "nazwa": "Puma"
+      }
+   ]
+}

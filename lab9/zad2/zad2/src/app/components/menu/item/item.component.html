@@ -1,0 +1,24 @@
+<div>
+  <!-- Główny checkbox dla kategorii -->
+  <label>
+    <!-- Checkbox główny, który wywołuje funkcję handleInput przy zmianie -->
+    <input type="checkbox" (input)="handleInput($event)" [checked]="everyChecked" />
+
+    <!-- Nazwa kategorii (np. Samochody, Rowery) -->
+    <span>{{ reportItem.category }}</span>
+  </label>
+
+  <!-- Kontener dla elementów w danej kategorii -->
+  <div class="items-container">
+    <!-- Dla każdego elementu tworzy checkbox i etykietę -->
+    <div *ngFor="let item of reportItem.items">
+      <label>
+        <!-- Checkbox dla elementu (np. konkretny produkt) -->
+        <input type="checkbox" (input)="handleInputChild($event, item)" [checked]="item.checked" />
+
+        <!-- Nazwa elementu (np. nazwa produktu) -->
+        <span>{{ item.nazwa }}</span>
+      </label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="animal-list">
+  <!-- Wyświetla liczbę zwierząt w ulubionych -->
+  <p class="favorite-count">Favorite Animals: {{ favoriteCount }}</p>
+
+  <!-- Iteruje po zwierzętach i wyświetla je w karcie -->
+  <div
+    *ngFor="let animal of animals"
+    class="animal-item"
+    [ngClass]="{ 'is-favorite': animal.favorite }"
+    (click)="onToggleFavorite(animal)"
+  >
+    <div class="animal-info">
+      <h3>{{ animal.name }}</h3>
+      <p><strong>Category:</strong> {{ animal.category }}</p>
+      <p><strong>Age:</strong> {{ animal.age }} years</p>
+      <p><strong>Weight:</strong> {{ animal.weight }} kg</p>
+      <p><strong>Favorite Food:</strong> {{ animal.favoriteFood }}</p>
+    </div>
+
+    <!-- Sekcja akcji z przyciskami do edytowania i usuwania -->
+    <div class="animal-actions">
+      <button class="action-btn edit-btn" (click)="editAnimal(animal.id); $event.stopPropagation()">Edit</button>
+      <button class="action-btn delete-btn" (click)="deleteAnimal(animal.id); $event.stopPropagation()">Delete</button>
+    </div>
+  </div>
+</div>

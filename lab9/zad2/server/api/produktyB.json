@@ -1,0 +1,68 @@
+{
+   "Samochody": [
+      {
+         "id": 1,
+         "nazwa": "Fiat"
+      },
+      {
+         "id": 2,
+         "nazwa": "Mercedes"
+      },
+      {
+         "id": 3,
+         "nazwa": "Bugatti"
+      },
+      {
+         "id": 4,
+         "nazwa": "BMW"
+      },
+      {
+         "id": 5,
+         "nazwa": "Audi"
+      },
+      {
+         "id": 6,
+         "nazwa": "Volkswagen"
+      }
+   ],
+   "Rowery": [
+      {
+         "id": 1,
+         "nazwa": "Kross"
+      },
+      {
+         "id": 2,
+         "nazwa": "Merida"
+      },
+      {
+         "id": 3,
+         "nazwa": "Trek"
+      },
+      {
+         "id": 4,
+         "nazwa": "Specialized"
+      }
+   ],
+   "Elektronika": [
+      {
+         "id": 1,
+         "nazwa": "Apple"
+      },
+      {
+         "id": 2,
+         "nazwa": "Samsung"
+      },
+      {
+         "id": 3,
+         "nazwa": "Xiaomi"
+      },
+      {
+         "id": 4,
+         "nazwa": "Sony"
+      },
+      {
+         "id": 5,
+         "nazwa": "LG"
+      }
+   ]
+}

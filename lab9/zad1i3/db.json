@@ -1,0 +1,52 @@
+{
+  "animals": [
+    {
+      "name": "Bolt",
+      "category": "Dog",
+      "age": 2,
+      "weight": 13,
+      "favoriteFood": "Pizza",
+      "id": "8c9e",
+      "favorite": true
+    },
+    {
+      "id": "3c99",
+      "name": "Diego",
+      "category": "Cat",
+      "age": 2,
+      "weight": 32,
+      "favoriteFood": "meat",
+      "favorite": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Dog"
+    },
+    {
+      "id": "2",
+      "name": "Cat"
+    },
+    {
+      "id": "9bec",
+      "name": "pomarancza"
+    },
+    {
+      "id": "aabc",
+      "name": "ninja"
+    },
+    {
+      "id": "1344",
+      "name": "pomidor"
+    },
+    {
+      "id": "1b5c",
+      "name": "pingwin"
+    },
+    {
+      "id": "f1ed",
+      "name": "snake"
+    }
+  ]
+}
