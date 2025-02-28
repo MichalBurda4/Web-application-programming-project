@@ -1,0 +1,390 @@
+:root { /*zmiana koloru*/
+    --blue-color: rgb(75, 75, 244);
+    --blue-color-light: rgb(135, 135, 255);
+
+    --red-color: rgb(243, 99, 99);
+    --red-color-light: rgb(255, 150, 150);
+
+    --green-color: rgb(98, 209, 98);
+    --green-color-light: rgb(170, 255, 170);
+
+    --orange-color: rgb(238, 146, 70);
+    --orange-color-light: rgb(255, 180, 120);
+
+    --black-color: rgb(20, 20, 20);
+    --black-color-light: rgb(80, 80, 80);
+
+    --blue-hue: hue-rotate(0deg);
+    --red-hue: hue-rotate(120deg);
+    --green-hue: hue-rotate(240deg);
+    --orange-hue: hue-rotate(150deg);
+    --black-hue: grayscale(100%);
+
+    &:has(.colors #blue:checked) {
+        --selected-color: var(--blue-color);
+        --selected-color-light: var(--blue-color-light);
+        --selected-hue: var(--blue-hue);
+    }
+    &:has(.colors #red:checked) {
+        --selected-color: var(--red-color);
+        --selected-color-light: var(--red-color-light);
+        --selected-hue: var(--red-hue);
+    }
+    &:has(.colors #green:checked) {
+        --selected-color: var(--green-color);
+        --selected-color-light: var(--green-color-light);
+        --selected-hue: var(--green-hue);
+    }
+    &:has(.colors #orange:checked) {
+        --selected-color: var(--orange-color);
+        --selected-color-light: var(--orange-color-light);
+        --selected-hue: var(--orange-hue);
+    }
+    &:has(.colors #black:checked) {
+        --selected-color: var(--black-color);
+        --selected-color-light: var(--black-color-light);
+        --selected-hue: var(--black-hue);
+    }
+
+
+}
+
+
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(151, 149, 149);
+}
+
+
+h2, h3, h4, p {
+    margin: 0;
+}
+
+input {
+    display: none;
+}
+
+label{
+    cursor: pointer;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    height: 530px;
+    width: 800px;
+
+    hr {
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    .image-container {
+        height: 90%;
+        width: 50%;
+        position: relative;
+        background: linear-gradient(45deg, var(--selected-color), var(--selected-color-light));
+
+        .logo {
+            position: absolute;
+            top: 10%;
+            left: 18%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+        }
+        .share {
+            cursor: pointer;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+
+            img {
+                width: 60%;
+                filter: var(--selected-hue);
+            }
+        }
+        .nike-text {
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-45%, -50%);
+            font-size: 160px;
+            font-weight: 800;
+            color: white;
+            opacity: 0.1;
+        }
+        .shoe{
+            width: 550px;
+            position: absolute;
+            z-index: 7;
+            transform: translate(-50%, -50%) rotate(-22deg);
+            top: 55%;
+            left: 32%;
+            filter: var(--selected-hue);
+        }
+    }
+
+    .description-container {
+        width:50%;
+        height: 100%;
+        padding: 30px 30px;
+        background-color: white;
+
+        h2 {
+            font-weight: 600;
+        }
+
+        h3 {
+            font-weight: 600;
+            margin-top: 2px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: rgb(96, 96, 96);
+        }
+
+        .new {
+            display: inline-block;
+            font-size: 15px;
+            background-color: var(--selected-color);
+            width: fit-content;
+            padding: 2px;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .colors {
+            margin-left: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+
+
+            input {
+                &:checked+label {
+                    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.509);
+                    div{
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+
+            label {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                div {
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    transition: ease .7s all;
+                }
+
+                &[for="blue"] div {
+                    background-color: var(--blue-color);
+                }
+                &[for="red"] div {
+                    background-color: var(--red-color);
+                }
+                &[for="green"] div {
+                    background-color: var(--green-color);
+                }
+                &[for="orange"] div {
+                    background-color: var(--orange-color);
+                }
+                &[for="black"] div {
+                    background-color: var(--black-color);
+                }
+            }
+        }
+
+        .sizes{
+            display: flex;
+            gap: 15px;
+            padding-left: 15px;
+
+            label {
+                height: 30px;
+                width: 30px;
+                padding: 5px;
+                background-color: rgb(180, 178, 178);
+                text-align: center;
+
+                border-radius: 5px;
+            }
+
+            input {
+                &:checked+label {
+                    background-color: var(--selected-color);
+                    color: white;
+                }
+            }
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                padding: 10px 20px;
+                background-color: var(--selected-color);
+                color: white;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--selected-color-light); /* Zmiana na jaśniejszy kolor  podczas najechania na przycisk*/
+                }
+            }
+        }
+    }
+}
+
+/* Mniejszy ekran */
+@media (max-width: 850px) {
+    .card {
+        flex-direction: column;
+        width: auto;
+        height: auto;
+
+        .image-container {
+            height: auto;
+            padding-top: 200px;
+
+            .shoe {
+                width: 100%;
+                max-width: 300px;
+                top: 25%;
+                left: 80%;
+                transform: translate(-90%, -10%) rotate(0deg); /* Obrócenie buta do pozycji poziomej */
+            }
+
+            .nike-text {
+                position: absolute;
+                top: 55%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 100px;
+                font-weight: 800;
+                color: white;
+                opacity: 0.1;
+            }
+            .logo {
+                position: absolute;
+                top: 30%;
+                left: 18%;
+                transform: translate(-50%, -50%);
+                width: 80px;
+            }
+            .share {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: absolute;
+                top: 22%;
+                background-color: white;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+
+                img {
+                    width: 60%;
+                    filter: var(--selected-hue);
+                }
+            }
+        }
+
+    }
+
+
+
+}
+
+/* Najmnijszy ekran */
+@media (max-width: 520px) {
+    .card {
+        flex-direction: column;
+        width: auto;
+        height: auto;
+
+        .image-container {
+            height: auto;
+            padding-top: 160px;
+
+            .shoe {
+                width: 100%;
+                max-width: 300px;
+                top: 25%;
+                left: 80%;
+                transform: translate(-90%, -10%) rotate(0deg); /* Obrócenie buta do pozycji poziomej */
+            }
+
+            .nike-text {
+                position: absolute;
+                top: 55%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 80px;
+                font-weight: 800;
+                color: white;
+                opacity: 0.1;
+            }
+            .logo {
+                position: absolute;
+                top: 35%;
+                left: 18%;
+                transform: translate(-50%, -50%);
+                width: 80px;
+            }
+            .share {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: absolute;
+                top: 22%;
+                background-color: white;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+
+                img {
+                    width: 60%;
+                    filter: var(--selected-hue);
+                }
+            }
+        }
+
+    }
+
+
+
+}

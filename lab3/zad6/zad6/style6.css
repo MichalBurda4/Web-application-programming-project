@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    height: 200vh; /* Dłuższa strona, aby można było scrollować */
+    padding: 20px;
+}
+
+.video-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 800px;
+    height: 400px;
+    background-color: #444568;
+    border: 2px solid #ddd;
+}
+
+.small-participant {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 120px;
+    height: 150px;
+    border: 2px solid #007bff;
+    background-color: #333;
+}
+
+.small-participant img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Dopasowanie zdjęcia do kontenera */
+    border-radius: 8px;
+}
+
+.main-video {
+    width: 60%;
+    height: 100%;
+}
+
+.main-video img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 8px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.control-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.control-btn:hover {
+    background-color: #0056b3;
+}
+
+.extra-content {
+    height: 1000px; /* Dodatkowa treść pozwalająca na scrollowanie strony */
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .main-video {
+        width: 80%;
+    }
+
+    .small-participant {
+        top: 15px;
+        left: 15px;
+        width: 120px;
+        height: 150px;
+    }
+}

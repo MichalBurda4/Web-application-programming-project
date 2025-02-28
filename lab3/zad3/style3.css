@@ -1,0 +1,62 @@
+#off:checked + label.off {
+    background-color: white;
+    box-shadow: 0px  0px 8px rgb(0, 0, 0);
+    color: black;
+}
+
+#on:checked + label.on {
+    background-color: white;
+    color: black;
+    box-shadow: 0px  0px 8px rgb(0, 0, 0);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    &:has(#off:checked){
+        background-color: #000000;
+    }
+    &:has(#on:checked){
+        background-color: white;
+    }
+}
+
+.button{
+    display: flex;
+    width: fit-content;
+    padding: 4px;
+
+    &:has(#off:checked){
+        background-color: grey;
+    }
+    &:has(#on:checked){
+        background-color: green;
+    }
+}
+
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    width: 100px;
+    display: inline-block;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+label {
+    background-color: transparent;
+    color: white;
+}
+
+
+
+

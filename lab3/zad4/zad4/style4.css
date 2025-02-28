@@ -1,0 +1,147 @@
+/* Basic Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1688b6;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    color: white;
+    margin: 0 2%;
+    flex-grow: 2;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.login-button, .signin-button {
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: solid 4px white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-button {
+    color: white;
+    background-color: transparent;
+}
+
+.login-button:hover {
+    background-color: #0c6e8a;
+    color: #6ce1fb;
+}
+
+.signin-button {
+    color: #87CEEB;
+    background-color: white;
+}
+
+.signin-button:hover {
+    background-color: #6ce1fb;
+    color: white;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+/* Submenu styling */
+.submenu, .submenu2 {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 100;
+    min-width: 150px;
+}
+
+.submenu2 {
+    left: 100%;
+    top: 0;
+    background-color: #ffffff;
+}
+
+/* Show submenu when the radio button is checked */
+input[type="radio"]:checked + label + .submenu,
+input[type="radio"]:checked + label + .submenu2 {
+    display: block;
+}
+
+/* Hide submenu when clicking outside */
+nav:focus-within .submenu,
+nav:focus-within .submenu2 {
+    display: none; /* Ensure submenus are hidden if not checked */
+}
+
+/* Style submenu items */
+.submenu li, .submenu2 li {
+    margin: 0;
+}
+
+.submenu li a, .submenu2 li a {
+    padding: 10px 20px;
+    color: #87CEEB;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.submenu li a:hover, .submenu2 li a:hover {
+    background-color: rgb(0, 140, 255);
+    color: white;
+}
+
+/* Hide radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Background image */
+.background-image {
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    position: relative;
+}
+
+.background-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(60, 180, 248, 0.5);
+    z-index: 1;
+}

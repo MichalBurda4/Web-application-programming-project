@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.calendar {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    height: 500px;
+    background-color: #fff;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.day-name {
+    float: right;
+    font-weight: normal;
+    color: #888;
+}
+
+.events {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.event {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+
+}
+
+.event-time {
+    color: #888;
+}
+
+.event-title {
+    color: #333;
+}
+
+.event-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #0ab0ec;
+
+}
