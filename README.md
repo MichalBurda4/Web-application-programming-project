@@ -1,4 +1,4 @@
-# Web-application-programming-project
+# Web-application-programming-course
 A course aimed at: 
 * Introduce students to the basic technologies for building websites and web applications (HTML5, CSS, JavaScript).
 * To impart knowledge of the architectural patterns used to build web applications.	
